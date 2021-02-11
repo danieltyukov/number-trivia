@@ -5,3 +5,5 @@ abstract class Failure extends Equatable {
     List properties = const <dynamic>[],
   ]) : super(properties);
 }
+class ServerFailure extends Failure {}
+class CacheFailure extends Failure {}
