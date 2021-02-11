@@ -9,4 +9,5 @@ class NumberTrivia extends Equatable {
     @required this.number,
     @required this.text,
   }) : super([text, number]);
+  
 }
