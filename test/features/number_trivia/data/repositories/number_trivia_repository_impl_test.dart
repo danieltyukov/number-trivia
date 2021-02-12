@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:number_trivia/core/error/exceptions.dart';
 
-import '../../../../../lib/core/error/exception.dart';
 import '../../../../../lib/core/error/failures.dart';
 import '../../../../../lib/core/platform/network_info.dart';
 import '../../../../../lib/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
