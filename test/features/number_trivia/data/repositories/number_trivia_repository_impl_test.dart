@@ -2,14 +2,13 @@ import 'package:dartz/dartz.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:number_trivia/core/error/exceptions.dart';
+import 'package:number_trivia/core/error/failures.dart';
 import 'package:number_trivia/core/network/network_info.dart';
-
-import '../../../../../lib/core/error/failures.dart';
-import '../../../../../lib/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
-import '../../../../../lib/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
-import '../../../../../lib/features/number_trivia/data/models/number_trivia_model.dart';
-import '../../../../../lib/features/number_trivia/data/repositories/number_trivia_repository__impl.dart';
-import '../../../../../lib/features/number_trivia/domain/entities/number_trivia.dart';
+import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
+import 'package:number_trivia/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
+import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model.dart';
+import 'package:number_trivia/features/number_trivia/data/repositories/number_trivia_repository__impl.dart';
+import 'package:number_trivia/features/number_trivia/domain/entities/number_trivia.dart';
 
 class MockRemoteDataSource extends Mock
     implements NumberTriviaRemoteDataSource {}
@@ -113,14 +112,7 @@ void main() {
           // assert
           verify(mockRemoteDataSource.getConcreteNumberTrivia(tNumber));
           verifyZeroInteractions(mockLocalDataSource);
-          expect(
-            result,
-            equals(
-              Left(
-                ServerFailure(),
-              ),
-            ),
-          );
+          expect(result, equals(Left(ServerFailure())));
         },
       );
     });
