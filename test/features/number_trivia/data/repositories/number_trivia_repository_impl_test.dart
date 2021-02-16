@@ -113,7 +113,14 @@ void main() {
           // assert
           verify(mockRemoteDataSource.getConcreteNumberTrivia(tNumber));
           verifyZeroInteractions(mockLocalDataSource);
-          expect(result, equals(Left(ServerFailure())));
+          expect(
+            result,
+            equals(
+              Left(
+                ServerFailure(),
+              ),
+            ),
+          );
         },
       );
     });
