@@ -42,7 +42,12 @@ void main() {
         // act
         final result = inputConverter.stringToUnsignedInteger(str);
         // assert
-        expect(result, Left(InvalidInputFailure()));
+        expect(
+          result,
+          Left(
+            InvalidInputFailure(),
+          ),
+        );
       },
     );
   });
