@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Number Trivia',
       theme: ThemeData(
         primaryColor: Colors.blue,
-        accentColor: Colors.blue,
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.blue),
       ),
       home: NumberTriviaPage(),
     );

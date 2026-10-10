@@ -33,7 +33,6 @@ class NumberTriviaPage extends StatelessWidget {
               SizedBox(height: 10),
               // Top half
               BlocBuilder<NumberTriviaBloc, NumberTriviaState>(
-                // ignore: missing_return
                 builder: (context, state) {
                   if (state is Empty) {
                     return MessageDisplay(
@@ -48,6 +47,7 @@ class NumberTriviaPage extends StatelessWidget {
                       message: state.message,
                     );
                   }
+                  return Container();
                 },
               ),
               SizedBox(height: 20),

@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matcher/matcher.dart';
@@ -9,12 +10,12 @@ import 'package:number_trivia/features/number_trivia/data/datasources/number_tri
 import 'package:number_trivia/features/number_trivia/data/models/number_trivia_model.dart';
 
 import '../../../../fixtures/fixture_reader.dart';
+import 'number_trivia_remote_data_source_test.mocks.dart';
 
-class MockHttpClient extends Mock implements http.Client {}
-
+@GenerateNiceMocks([MockSpec<http.Client>(as: #MockHttpClient)])
 void main() {
-  NumberTriviaRemoteDataSourceImpl dataSource;
-  MockHttpClient mockHttpClient;
+  late NumberTriviaRemoteDataSourceImpl dataSource;
+  late MockHttpClient mockHttpClient;
 
   setUp(() {
     mockHttpClient = MockHttpClient();
@@ -48,7 +49,7 @@ void main() {
           dataSource.getConcreteNumberTrivia(tNumber);
           // assert
           verify(mockHttpClient.get(
-            'http://numbersapi.com/$tNumber',
+            Uri.parse('http://numbersapi.com/$tNumber'),
             headers: {
               'Content-Type': 'application/json',
             },
@@ -102,7 +103,7 @@ void main() {
         dataSource.getRandomNumberTrivia();
         // assert
         verify(mockHttpClient.get(
-          'http://numbersapi.com/random',
+          Uri.parse('http://numbersapi.com/random'),
           headers: {
             'Content-Type': 'application/json',
           },

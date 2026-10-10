@@ -4,7 +4,7 @@ import 'package:number_trivia/features/number_trivia/presentation/bloc/bloc.dart
 import 'package:number_trivia/features/number_trivia/presentation/bloc/number_trivia_bloc.dart';
 class TriviaControls extends StatefulWidget {
   const TriviaControls({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -13,7 +13,7 @@ class TriviaControls extends StatefulWidget {
 
 class _TriviaControlsState extends State<TriviaControls> {
   final controller = TextEditingController();
-  String inputStr;
+  String inputStr = '';
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +37,20 @@ class _TriviaControlsState extends State<TriviaControls> {
         Row(
           children: <Widget>[
             Expanded(
-              child: RaisedButton(
-                child: Text('Search'),
-                color: Theme.of(context).accentColor,
-                textTheme: ButtonTextTheme.primary,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  foregroundColor: Theme.of(context).colorScheme.onSecondary,
+                ),
                 onPressed: dispatchConcrete,
+                child: Text('Search'),
               ),
             ),
             SizedBox(width: 10),
             Expanded(
-              child: RaisedButton(
-                child: Text('Get random trivia'),
+              child: ElevatedButton(
                 onPressed: dispatchRandom,
+                child: Text('Get random trivia'),
               ),
             ),
           ],
